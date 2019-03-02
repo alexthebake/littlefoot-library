@@ -1,0 +1,72 @@
+[
+  {
+    "title": "Infinite Jest",
+    "author": "Kandace Haag",
+    "n_pages": 514,
+    "ddc": "275",
+    "read_status": "partially_read"
+  },
+  {
+    "title": "Unweaving the Rainbow",
+    "author": "Danille Reilly",
+    "n_pages": 561,
+    "ddc": "606",
+    "read_status": "unread"
+  },
+  {
+    "title": "Mother Night",
+    "author": "Lindsy Gleichner",
+    "n_pages": 926,
+    "ddc": "731",
+    "read_status": "unread"
+  },
+  {
+    "title": "The Moving Finger",
+    "author": "Amy Corwin V",
+    "n_pages": 829,
+    "ddc": "384",
+    "read_status": "read"
+  },
+  {
+    "title": "After Many a Summer Dies the Swan",
+    "author": "Brandon Bernier",
+    "n_pages": 553,
+    "ddc": "032",
+    "read_status": "read"
+  },
+  {
+    "title": "Ring of Bright Water",
+    "author": "Denny Predovic",
+    "n_pages": 624,
+    "ddc": "507",
+    "read_status": "read"
+  },
+  {
+    "title": "Beneath the Bleeding",
+    "author": "Tony Lehner",
+    "n_pages": 921,
+    "ddc": "250",
+    "read_status": "unread"
+  },
+  {
+    "title": "The Waste Land",
+    "author": "Tory Schimmel",
+    "n_pages": 136,
+    "ddc": "448",
+    "read_status": "read"
+  },
+  {
+    "title": "East of Eden",
+    "author": "Molly Gutkowski",
+    "n_pages": 854,
+    "ddc": "507",
+    "read_status": "unread"
+  },
+  {
+    "title": "The Heart Is Deceitful Above All Things",
+    "author": "Monique Cronin",
+    "n_pages": 398,
+    "ddc": "883",
+    "read_status": "read"
+  }
+]

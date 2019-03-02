@@ -1,63 +1,53 @@
-READ_STATUS = {
-  read: :read,
-  unread: :unread,
-  partially_read: :partially_read
-}
+require 'json'
+require_relative 'lib/littlefoot'
 
-DEWEY_DECIMAL_CATEGORIES = [
-  "Computer Science, Information & General Works",
-  "Philosophy & Psychology",
-  "Religion",
-  "Social Sciences",
-  "Language",
-  "Pure Science",
-  "Applied Science",
-  "Arts & Recreation",
-  "Literature",
-  "History & Geography"
-]
+TITLE_WIDTH = 40
+LIST_PADDING = 4
 
-class ReturnRecord < Struct.new(:title,
-                                :author,
-                                :n_pages,
-                                :ddc,
-                                :read_status)
-  def matches_category?(category)
-    category_index = DEWEY_DECIMAL_CATEGORIES.index(category)
-    Integer(ddc[0]) == category_index
+def print_list(title, items)
+  max_width = items.map { |item| item[:label].length }.max
+
+  puts title
+  puts "-" * TITLE_WIDTH
+  items.each do |item|
+    label_width = item[:label].length
+    extra_padding = max_width - label_width + LIST_PADDING
+    puts item[:label] + ("." * extra_padding) + "#{item[:value]}"
   end
+  puts "\n"
 end
 
-class RecordReporter
-  def initialize(records)
-    @records = records
-  end
+input_filepath = ARGV[0]
 
-  def total_pages_read
-    pages_read_for_records(@records)
-  end
-
-  def total_pages_read_for_category(category)
-    category_records = @records.select do |record|
-      record.matches_category?(category)
-    end
-    pages_read_for_records(category_records)
-  end
-
-  private
-
-  def pages_read_for_record(record)
-    return 0 if record.read_status == :unread
-    if record.read_status == :partially_read
-      record.n_pages / 2
-    else
-      record.n_pages
-    end
-  end
-
-  def pages_read_for_records(records)
-    records
-      .map { |record| pages_read_for_record(record) }
-      .reduce(0, :+)
-  end
+input_data = JSON.parse(File.read(input_filepath))
+records = input_data.map do |record|
+  Littlefoot::ReturnRecord.new(
+    record["title"],
+    record["author"],
+    record["n_pages"],
+    record["ddc"],
+    record["read_status"]
+  )
 end
+
+reporter = Littlefoot::RecordReporter.new(records)
+
+print_list(
+  "ALL RETURN RECORDS",
+  [
+    {
+      label: "Total",
+      value: reporter.total_pages_read
+    }
+  ]
+)
+
+print_list(
+  "CATEGORY RETURN RECORDS",
+  Littlefoot::DEWEY_DECIMAL_CATEGORIES.map do |category|
+    {
+      label: category,
+      value: reporter.total_pages_read_for_category(category)
+    }
+  end
+)

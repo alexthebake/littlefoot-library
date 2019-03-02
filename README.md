@@ -1,4 +1,24 @@
 # littlefoot-library
+## Instructions
+### Installation
+To run tests and generate some data, you'll need to install a few gems. Using
+bundler, you can simply run:
+```
+bundle
+```
+
+### Usage
+This program accepts a JSON file with return record data following [this schema][1].
+Check out the [sample data][2] for an example.
+```
+$ ruby main.rb <input_json_filepath>
+```
+
+### Tests
+```
+bundle exec rspec
+```
+
 ## System Definition
 ### Return Record
 For each book that is returned, the system needs to record the following information:
@@ -27,3 +47,6 @@ For your convenience, here are the Dewey Decimal System’s categories:
 - 700 – Arts & Recreation
 - 800 – Literature
 - 900 – History & Geography
+
+[1]: input_schema.json
+[2]: fixtures/sample_data.json

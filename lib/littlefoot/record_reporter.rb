@@ -10,7 +10,7 @@ module Littlefoot
 
     def total_pages_read_for_category(category)
       category_records = @records.select do |record|
-        record.matches_category?(category)
+        record.category?(category)
       end
       pages_read_for_records(category_records)
     end

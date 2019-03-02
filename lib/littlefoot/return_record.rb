@@ -19,13 +19,9 @@ module Littlefoot
     :ddc,
     :read_status
   )
-    def matches_category?(category)
+    def category?(category)
       category_index = DEWEY_DECIMAL_CATEGORIES.index(category)
       Integer(ddc[0]) == category_index
-    end
-
-    def to_json
-      self.to_h.to_json
     end
   end
 end

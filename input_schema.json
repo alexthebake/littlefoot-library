@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "littlefoot",
+  "definitions": {
+    "return_record": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "n_pages": {
+          "type": "number"
+        },
+        "ddc": {
+          "type": "string",
+          "pattern": "^([0-9]{3})$"
+        },
+        "read_status": {
+          "type": "string",
+          "enum": ["read", "unread", "partially_read"]
+        }
+      },
+      "required": ["title", "author", "n_pages", "ddc", "read_status"]
+    }
+  },
+  "type": "array",
+  "items": { "$ref": "#/definitions/return_record" }
+}

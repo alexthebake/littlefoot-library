@@ -14,7 +14,28 @@ Check out the [sample data][2] for an example.
 $ ruby main.rb <input_json_filepath>
 ```
 
+Using the sample data, we'll get this output:
+```
+ALL RETURN RECORDS
+================================================================
+Total....6316
+
+CATEGORY RETURN RECORDS
+================================================================
+Computer Science, Information & General Works....553
+Philosophy & Psychology..........................0
+Religion.........................................1435
+Social Sciences..................................829
+Language.........................................136
+Pure Science.....................................1478
+Applied Science..................................561
+Arts & Recreation................................926
+Literature.......................................398
+History & Geography..............................0
+```
+
 ### Tests
+To run tests simply run:
 ```
 bundle exec rspec
 ```
